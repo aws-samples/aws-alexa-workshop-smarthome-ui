@@ -1,0 +1,6 @@
+type Device @model {
+  id: ID!
+  name: String!
+  description: String
+  userId: String!
+}

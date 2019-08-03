@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Amplify, { API, graphqlOperation, Auth, S3Image } from 'aws-amplify';
+import { createDevice } from './graphql/mutations'
+import awsconfig from './aws-exports';
+import { withAuthenticator } from 'aws-amplify-react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+Amplify.configure(awsconfig);
+
+class App extends Component {
+
+  bindDeviceToUser = async () => {
+
+    const currentUser = await Auth.currentAuthenticatedUser();
+
+    const deviceDetails = {
+      name: "first device",
+      description: "this is a shit",
+      userId: currentUser.username
+    };
+
+    const newDevice = await API.graphql(graphqlOperation(createDevice, {input: deviceDetails}));
+    console.log(JSON.stringify(newDevice))
+
+  };
+
+
+  render() {
+    return (
+        <div className="App">
+          <p> Pick a file</p>
+          <button onClick={this.bindDeviceToUser}> Bind </button>
+        </div>
+    );
+  }
 }
 
-export default App;
+const signUpConfig = {
+  defaultCountryCode: "86",
+  usernameAttributes: "email"
+};
+
+export default withAuthenticator(App, { signUpConfig });

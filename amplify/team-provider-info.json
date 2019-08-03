@@ -1,0 +1,19 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "aws-alexa-ui-dev-20190802224923-authRole",
+            "UnauthRoleArn": "arn:aws:iam::178770047227:role/aws-alexa-ui-dev-20190802224923-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::178770047227:role/aws-alexa-ui-dev-20190802224923-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "aws-alexa-ui-dev-20190802224923-deployment",
+            "UnauthRoleName": "aws-alexa-ui-dev-20190802224923-unauthRole",
+            "StackName": "aws-alexa-ui-dev-20190802224923",
+            "StackId": "arn:aws:cloudformation:us-west-2:178770047227:stack/aws-alexa-ui-dev-20190802224923/b81fa800-b534-11e9-b78f-06ccd811a1e0"
+        },
+        "categories": {
+            "auth": {
+                "awsalexaui51864c6a": {}
+            }
+        }
+    }
+}
