@@ -6,6 +6,10 @@ The web application is built by [AWS Amplify](https://aws-amplify.github.io/). T
 
 ![](docs/arch.jpg)
 
+When bind a device to a user, it will invoke the API and create an record in DynamoDB. When 
+your device cloud receive a [Alexa.Discovery](https://developer.amazon.com/docs/device-apis/alexa-discovery.html)
+directive, your Lambda should retrieve from this DynamoDB table and return to Alexa.
+
 ## How to Run 
 
 In this application, **Yarn** and **node.js** are used to build the application. Please install the [Yarn](https://yarnpkg.com/en/) and [node.js](https://nodejs.org/en/). 
@@ -51,4 +55,11 @@ Wait for the deployment to be finished. You will be see the URL for the web appl
 
 Open `http://<amplify-app-link>/?deviceId=xxxxxx`.
 
+You will asked to registered an account if you don't have any. 
 In this application, you should input **email** address as your username.
+
+Once you login, the browser will be navigated the device binding page. Click
+the **Bind** button to link the device to your account.
+
+![](docs/device-bind.jpg)
+
