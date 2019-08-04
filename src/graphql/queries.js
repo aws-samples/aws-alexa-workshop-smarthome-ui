@@ -11,11 +11,12 @@ export const getDevice = `query GetDevice($id: ID!) {
 }
 `;
 export const listDevices = `query ListDevices(
+  $id: ID
   $filter: ModelDeviceFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listDevices(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listDevices(id: $id, filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
       name

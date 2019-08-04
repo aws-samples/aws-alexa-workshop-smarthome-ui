@@ -8,13 +8,14 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
 import {API, Auth, graphqlOperation} from "aws-amplify";
-import {createDevice} from "./graphql/mutations";
-
+import * as queries from "./graphql/queries";
+import * as mutations from "./graphql/mutations";
+import Connect from "aws-amplify-react/src/API/GraphQL/Connect";
 
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
-    marginTop: 30
+    margin: 30
   },
   media: {
     height: 0,
@@ -27,23 +28,26 @@ export default function Device() {
   const urlParams = new URLSearchParams(window.location.search);
   const deviceId = urlParams.get('deviceId');
 
-  console.log(`device id: ${deviceId}`);
-
   const bindDeviceToUser = async () => {
     const currentUser = await Auth.currentAuthenticatedUser();
 
     const deviceDetails = {
       id: deviceId,
-      name: "first device",
-      description: "this is a shit",
+      name: "Smart Lamp",
       userId: currentUser.username
     };
 
-    const newDevice = await API.graphql(graphqlOperation(createDevice, {input: deviceDetails}));
+    const newDevice = await API.graphql(graphqlOperation(mutations.createDevice, {input: deviceDetails}));
     console.log(newDevice)
   };
 
-  return (
+  const unbindDevice = async () => {
+
+    const oldDevice = await API.graphql(graphqlOperation(mutations.deleteDevice, {input: {id: deviceId}}));
+    console.log(oldDevice)
+  };
+
+  const CardView = ({ device }) =>  (
     <Grid container justify={"center"}>
       <Card className={classes.card}>
         <CardMedia
@@ -60,11 +64,34 @@ export default function Device() {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary" onClick={bindDeviceToUser}>
-            Bind
-          </Button>
+          {(() => {
+            if (device && device.id) {
+              return (
+                <Button variant="contained" size="large" color="primary" onClick={unbindDevice}>
+                  Unbind
+                </Button>
+              )
+            } else {
+              return (
+                <Button variant="contained" size="large" color="primary" onClick={bindDeviceToUser}>
+                  Bind
+                </Button>
+              )
+            }
+          })()}
         </CardActions>
       </Card>
     </Grid>
+  );
+
+  return (
+    <div>
+      <Connect query={graphqlOperation(queries.getDevice, {id: deviceId})}>
+        {({ data: { getDevice }, error }) => {
+          if (error) return (<h3>Error</h3>);
+          return (<CardView device={getDevice} /> );
+        }}
+      </Connect>
+    </div>
   );
 }
