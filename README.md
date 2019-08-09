@@ -10,12 +10,33 @@ When bind a device to a user, it will invoke the API and create an record in Dyn
 your device cloud receive a [Alexa.Discovery](https://developer.amazon.com/docs/device-apis/alexa-discovery.html)
 directive, your Lambda should retrieve from this DynamoDB table and return to Alexa.
 
+The following flow chart describes a proposed design of how to bind physical device to users.
+![](docs/device-bind-flow.png)
+
+For a physical device, a serial number is usually being used to uniquely identify a device.
+In this proposal, the serial number has been encoded into a QR code together with a link to a 
+web page on which customers can bind their devices. The QR Code is shipped with the device.
+
+1. Customer scan the QR code with their mobile phone
+1. A web page being rendered on the phone
+1. Redirect to the login page (skip to step )
+1. Submit login information and get `accessToken` and `idToken`
+1. Get user profile using `accessToken`
+1. Invoke device binding API
+1. Create device and user relationship in database
+
+The Alexa does not have any requirement for creating the relationship between devices and users.
+You can always design your own work flow. 
+
+Once the Alexa backend server receives the [Alexa.Discovery](https://developer.amazon.com/docs/device-apis/alexa-discovery.html),
+the server can retrieve device information from the database and return to Alexa.
+
 ## How to Run
 
 This is a [modern web application](https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html#what-are-modern-web-applications),
 thus the easiest way for deployment is [AWS Amplify Console](https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html).
 
-### Deployment
+### Deployment to Amplify Console
 
 1. Git push your code to **GitHub**, **BitBucket**, **GitLab** or **CodeCommit**. You can fork this repo on GitHub.
 1. Open **Amplify Console** in AWS Console, click **Get started** in **Deploy** session
@@ -31,7 +52,7 @@ thus the easiest way for deployment is [AWS Amplify Console](https://docs.aws.am
 
 Wait for the deployment to be finished. You will be see the URL for the web application.
 
-### Run the Web
+### Open the Web
 
 Open `http://<amplify-app-link>/?deviceId=xxxxxx`.
 
