@@ -65,7 +65,7 @@ export default function Device() {
         </CardContent>
         <CardActions>
           {(() => {
-            if (device && device.id) {
+            if (device && device.username) {
               return (
                 <Button variant="contained" size="large" color="primary" onClick={unbindDevice}>
                   Unbind
