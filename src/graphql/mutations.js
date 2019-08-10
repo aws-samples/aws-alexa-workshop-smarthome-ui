@@ -3,28 +3,25 @@
 
 export const createDevice = `mutation CreateDevice($input: CreateDeviceInput!) {
   createDevice(input: $input) {
-    id
-    name
+    thingName
+    username
     description
-    userId
   }
 }
 `;
 export const updateDevice = `mutation UpdateDevice($input: UpdateDeviceInput!) {
   updateDevice(input: $input) {
-    id
-    name
+    thingName
+    username
     description
-    userId
   }
 }
 `;
 export const deleteDevice = `mutation DeleteDevice($input: DeleteDeviceInput!) {
   deleteDevice(input: $input) {
-    id
-    name
+    thingName
+    username
     description
-    userId
   }
 }
 `;

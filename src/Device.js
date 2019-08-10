@@ -32,8 +32,8 @@ export default function Device() {
     const currentUser = await Auth.currentAuthenticatedUser();
 
     const deviceDetails = {
-      username: currentUser.username,
       thingName: thingName,
+      username: currentUser.username,
       description: 'Smart Lamp'
     };
 
@@ -43,7 +43,7 @@ export default function Device() {
 
   const unbindDevice = async () => {
 
-    const oldDevice = await API.graphql(graphqlOperation(mutations.deleteDevice, {input: {id: deviceId}}));
+    const oldDevice = await API.graphql(graphqlOperation(mutations.deleteDevice, {input: {thingName: thingName}}));
     console.log(oldDevice)
   };
 
@@ -86,7 +86,7 @@ export default function Device() {
 
   return (
     <div>
-      <Connect query={graphqlOperation(queries.getDevice, {id: deviceId})}>
+      <Connect query={graphqlOperation(queries.getDevice, {thingName: thingName})}>
         {({ data: { getDevice }, error }) => {
           if (error) return (<h3>Error</h3>);
           return (<CardView device={getDevice} /> );

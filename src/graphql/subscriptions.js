@@ -3,28 +3,25 @@
 
 export const onCreateDevice = `subscription OnCreateDevice {
   onCreateDevice {
-    id
-    name
+    thingName
+    username
     description
-    userId
   }
 }
 `;
 export const onUpdateDevice = `subscription OnUpdateDevice {
   onUpdateDevice {
-    id
-    name
+    thingName
+    username
     description
-    userId
   }
 }
 `;
 export const onDeleteDevice = `subscription OnDeleteDevice {
   onDeleteDevice {
-    id
-    name
+    thingName
+    username
     description
-    userId
   }
 }
 `;
