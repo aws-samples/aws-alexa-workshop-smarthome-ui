@@ -54,7 +54,7 @@ Wait for the deployment to be finished. You will be see the URL for the web appl
 
 ### Open the Web
 
-Open `http://<amplify-app-link>/?deviceId=xxxxxx`.
+Open `http://<amplify-app-link>/?thingName=xxxxxx`.
 
 You will asked to registered an account if you don't have any. 
 In this application, you should input **email** address as your username.
@@ -85,6 +85,6 @@ The easiest way to install is via **npm**. If you install nodejs via NVM, it wil
 1. Run `yarn install` to install dependencies
 1. Run `yarn start` to start the web application
 
-Open [http://localhost:3000/?deviceId=xxxxxxxx](http://localhost:3000/?deviceId=xxxxxxxx) to view it in the browser.
+Open [http://localhost:3000/?thingName=xxxxxxxx](http://localhost:3000/?thingName=xxxxxxxx) to view it in the browser.
 
 If you are the first time to run the web application. You should click the **Create account** button to create an account.

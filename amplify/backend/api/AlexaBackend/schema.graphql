@@ -1,6 +1,5 @@
-type Device @model @key(fields: ["id"]) {
-  id: ID!
-  name: String!
+type Device @model @key(fields: ["username", "thingName"]) {
+  username: String!
+  thingName: String!
   description: String
-  userId: String!
 }

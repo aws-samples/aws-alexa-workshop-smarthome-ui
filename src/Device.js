@@ -26,15 +26,15 @@ const useStyles = makeStyles({
 export default function Device() {
   const classes = useStyles();
   const urlParams = new URLSearchParams(window.location.search);
-  const deviceId = urlParams.get('deviceId');
+  const thingName = urlParams.get('thingName');
 
   const bindDeviceToUser = async () => {
     const currentUser = await Auth.currentAuthenticatedUser();
 
     const deviceDetails = {
-      id: deviceId,
-      name: "Smart Lamp",
-      userId: currentUser.username
+      username: currentUser.username,
+      thingName: thingName,
+      description: 'Smart Lamp'
     };
 
     const newDevice = await API.graphql(graphqlOperation(mutations.createDevice, {input: deviceDetails}));
