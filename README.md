@@ -69,7 +69,9 @@ Refresh the page to check if the button's status has changed to Unbind
 
 ## Local Development
 
-You will ONLY need to run this if you would like to develop locally. If you have already finished step1 Deployment to Amplify Console, skip this part.
+**You will ONLY need to run this if you would like to develop locally.**
+
+**If you have already finished [Deployment to Amplify Console](#deployment-to-amplify-console), skip this part.**
 
 In this application, **Yarn** and **node.js** are used to build the application. 
 Please install the [Yarn](https://yarnpkg.com/en/) and [node.js](https://nodejs.org/en/). 
@@ -92,7 +94,7 @@ Open [http://localhost:3000/?thingName=xxxxxxxx](http://localhost:3000/?thingNam
 If you are the first time to run the web application. You should click the **Create account** button to create an account.
 
 
-##	Nest step
+##	Next step
 You may now go to [Setup Smart Lamp Simulator](https://github.com/lab798/aws-alexa-workshop-smarthome-lamp) to proceed the workshop.
 
 

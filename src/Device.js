@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -11,6 +13,10 @@ import {API, Auth, graphqlOperation} from "aws-amplify";
 import * as queries from "./graphql/queries";
 import * as mutations from "./graphql/mutations";
 import Connect from "aws-amplify-react/src/API/GraphQL/Connect";
+import Snackbar from '@material-ui/core/Snackbar';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import {amber, green} from "@material-ui/core/colors"
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 const useStyles = makeStyles({
   card: {
@@ -23,8 +29,11 @@ const useStyles = makeStyles({
   },
 });
 
+
+
 export default function Device() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
   const urlParams = new URLSearchParams(window.location.search);
   const thingName = urlParams.get('thingName');
 
@@ -38,14 +47,19 @@ export default function Device() {
     };
 
     const newDevice = await API.graphql(graphqlOperation(mutations.createDevice, {input: deviceDetails}));
+    setOpen(true)
+
     console.log(newDevice)
   };
 
   const unbindDevice = async () => {
 
     const oldDevice = await API.graphql(graphqlOperation(mutations.deleteDevice, {input: {thingName: thingName}}));
+    setOpen(true)
+
     console.log(oldDevice)
   };
+
 
   const CardView = ({ device }) =>  (
     <Grid container justify={"center"}>
@@ -84,8 +98,90 @@ export default function Device() {
     </Grid>
   );
 
+  const useStyles1 = makeStyles(theme => ({
+    success: {
+      backgroundColor: green[600],
+    },
+    error: {
+      backgroundColor: theme.palette.error.dark,
+    },
+    info: {
+      backgroundColor: theme.palette.primary.main,
+    },
+    warning: {
+      backgroundColor: amber[700],
+    },
+    icon: {
+      fontSize: 20,
+    },
+    iconVariant: {
+      opacity: 0.9,
+      marginRight: theme.spacing(1),
+    },
+    message: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+  }));
+
+  const variantIcon = {
+    success: CheckCircleIcon
+  };
+
+  function MySnackbarContentWrapper(props) {
+    const classes = useStyles1();
+    const { className, message, onClose, variant, ...other } = props;
+    const Icon = variantIcon[variant];
+
+    return (
+      <SnackbarContent
+        className={clsx(classes[variant], className)}
+        aria-describedby="client-snackbar"
+        message={
+          <span id="client-snackbar" className={classes.message}>
+          <Icon className={clsx(classes.icon, classes.iconVariant)} />
+            {message}
+        </span>
+        }
+        {...other}
+      />
+    );
+  }
+
+  MySnackbarContentWrapper.propTypes = {
+    className: PropTypes.string,
+    message: PropTypes.string,
+    onClose: PropTypes.func,
+    variant: PropTypes.oneOf(['error', 'info', 'success', 'warning']).isRequired,
+  };
+
+
+  function handleClose(event, reason) {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  }
+
+
   return (
     <div>
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        open={open}
+        autoHideDuration={2000}
+        onClose={handleClose}
+      >
+        <MySnackbarContentWrapper
+          variant="success"
+          message="Success!"
+          onClose={handleClose}
+        />
+      </Snackbar>
       <Connect query={graphqlOperation(queries.getDevice, {thingName: thingName})}>
         {({ data: { getDevice }, error }) => {
           if (error) return (<h3>Error</h3>);
