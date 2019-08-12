@@ -33,20 +33,21 @@ the server can retrieve device information from the database and return to Alexa
 
 ## How to Run
 
+You could choose either to **Deploy this to Amplify console** or to **develop locally**.
 This is a [modern web application](https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html#what-are-modern-web-applications),
-thus the easiest way for deployment is [AWS Amplify Console](https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html).
+thus the easiest way for deployment is [AWS Amplify Console](https://docs.aws.amazon.com/zh_cn/amplify/latest/userguide/welcome.html).
+
 
 ### Deployment to Amplify Console
-
-1. Git push your code to **GitHub**, **BitBucket**, **GitLab** or **CodeCommit**. You can fork this repo on GitHub.
-1. Open **Amplify Console** in AWS Console, click **Get started** in **Deploy** session
+1. To get the code for this lab, You can fork this repo on GitHub. You could also push your code to **GitHub**, **BitBucket**, **GitLab** or **CodeCommit**. 
+1. Open **Amplify Console** in [AWS Console](https://console.aws.amazon.com/amplify/home?region=us-east-1#/), click **Get started** in **Deploy** session
 ![](docs/amplify-console-get-started.png)
 1. Choose the Git repo provider and select **Continue**
-1. Choose the repo and branch, select **Next**
+1. Github will automatically ask for the authorization, after that, Choose the repo and branch, select **Next**
 ![](docs/amplify-console-repo.png)
 1. Input **App name**
 1. Create a new environment, input the **environment name** of leave it as default
-1. Select or create a new service role, and click **Next**
+1. Select or **create a new service role**, and click **Next**
 ![](docs/amplify-console-settings.png)
 1. Click **Save and deploy**
 
@@ -64,10 +65,11 @@ the **Bind** button to link the device to your account.
 
 ![](docs/device-bind.jpg)
 
+Refresh the page to check if the button's status has changed to Unbind
 
-## Development
+## Local Development
 
-You will ONLY need to run this if you would like to develop locally.
+You will ONLY need to run this if you would like to develop locally. If you have already finished step1 Deployment to Amplify Console, skip this part.
 
 In this application, **Yarn** and **node.js** are used to build the application. 
 Please install the [Yarn](https://yarnpkg.com/en/) and [node.js](https://nodejs.org/en/). 
@@ -88,3 +90,10 @@ The easiest way to install is via **npm**. If you install nodejs via NVM, it wil
 Open [http://localhost:3000/?thingName=xxxxxxxx](http://localhost:3000/?thingName=xxxxxxxx) to view it in the browser.
 
 If you are the first time to run the web application. You should click the **Create account** button to create an account.
+
+
+##	Nest step
+You may now go to [Setup Smart Lamp Simulator](https://github.com/lab798/aws-alexa-workshop-smarthome-lamp) to proceed the workshop.
+
+
+
