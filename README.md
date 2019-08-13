@@ -55,7 +55,11 @@ Wait for the deployment to be finished. You will be see the URL for the web appl
 
 ### Open the Web
 
-Open `http://<amplify-app-link>/?thingName=xxxxxx`.
+> If you followed [AWS-Alexa Workshop Smart Home](https://github.com/lab798/aws-alexa-workshop-smarthome) Workshop,
+> you can skip this step. You should proceed to [Setup Smart Lamp Simulator](https://github.com/lab798/aws-alexa-workshop-smarthome-lamp).
+
+Open `http://<amplify-app-link>/?thingName=xxxxxx`. If you don't append the `thingName=xxx` parameter, 
+you will get an blank page.
 
 You will asked to registered an account if you don't have any. 
 In this application, you should input **email** address as your username.
