@@ -53,7 +53,7 @@ thus the easiest way for deployment is [AWS Amplify Console](https://docs.aws.am
 
 Wait for the deployment to be finished. You will be see the URL for the web application.
 
-### Open the Web
+### Open the Web (Optional)
 
 > If you followed [AWS-Alexa Workshop Smart Home](https://github.com/lab798/aws-alexa-workshop-smarthome) Workshop,
 > you can skip this step. You should proceed to [Setup Smart Lamp Simulator](https://github.com/lab798/aws-alexa-workshop-smarthome-lamp).
@@ -71,7 +71,7 @@ the **Bind** button to link the device to your account.
 
 Refresh the page to check if the button's status has changed to Unbind
 
-## Local Development
+## Local Development (Optional)
 
 **You will ONLY need to run this if you would like to develop locally.**
 
