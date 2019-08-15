@@ -40,18 +40,28 @@ thus the easiest way for deployment is [AWS Amplify Console](https://docs.aws.am
 
 ### Deployment to Amplify Console
 1. To get the code for this lab, You can fork this repo on GitHub. You could also push your code to **GitHub**, **BitBucket**, **GitLab** or **CodeCommit**. 
+
 1. Open **Amplify Console** in [AWS Console](https://console.aws.amazon.com/amplify/home?region=us-east-1#/), click **Get started** in **Deploy** session
-![](docs/amplify-console-get-started.png)
+    ![](docs/amplify-console-get-started.png)
+
 1. Choose the Git repo provider and select **Continue**
+
 1. Github will automatically ask for the authorization, after that, Choose the repo and branch, select **Next**
-![](docs/amplify-console-repo.png)
+    ![](docs/amplify-console-repo.png)
+
 1. Input **App name**
+
 1. Create a new environment, input the **environment name** of leave it as default
+
 1. Select or **create a new service role**, and click **Next**
-![](docs/amplify-console-settings.png)
+    ![](docs/amplify-console-settings.png)
+
 1. Click **Save and deploy**
 
 Wait for the deployment to be finished. You will be see the URL for the web application.
+    ![](docs/amplify-url.png)
+
+
 
 ### Open the Web (Optional)
 
