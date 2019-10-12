@@ -1,0 +1,8 @@
+type Device @model
+  @key(fields: ["thingName"])
+  @key(name: "ByUsernameThingName", fields: ["username", "thingName"])
+{
+  thingName: String!
+  username: String!
+  description: String
+}

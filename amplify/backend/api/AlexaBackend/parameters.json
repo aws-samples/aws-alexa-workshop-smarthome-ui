@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "AlexaBackend",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authawsalexaui51864c6a",
+            "Outputs.UserPoolId"
+        ]
+    }
+}

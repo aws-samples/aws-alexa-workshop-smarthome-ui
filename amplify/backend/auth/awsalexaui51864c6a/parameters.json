@@ -1,0 +1,62 @@
+{
+    "identityPoolName": "awsalexaui51864c6a_identitypool_51864c6a",
+    "allowUnauthenticatedIdentities": false,
+    "openIdLambdaRoleName": "awsale51864c6a_openid_lambda_role",
+    "resourceNameTruncated": "awsale51864c6a",
+    "userPoolName": "awsalexaui51864c6a_userpool_51864c6a",
+    "autoVerifiedAttributes": [
+        "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+        "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+        "email"
+    ],
+    "userpoolClientName": "awsale51864c6a_app_client",
+    "userpoolClientGenerateSecret": true,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+        "email"
+    ],
+    "userpoolClientReadAttributes": [
+        "email"
+    ],
+    "mfaLambdaRole": "awsale51864c6a_totp_lambda_role",
+    "userpoolClientLambdaRole": "awsale51864c6a_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "resourceName": "awsalexaui51864c6a",
+    "authSelections": "identityPoolAndUserPool",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    },
+    "unauthRoleArn": {
+        "Fn::GetAtt": [
+            "UnauthRole",
+            "Arn"
+        ]
+    },
+    "useDefault": "default",
+    "usernameAttributes": [
+        "email, phone_number"
+    ],
+    "additionalQuestions": [],
+    "dependsOn": []
+}

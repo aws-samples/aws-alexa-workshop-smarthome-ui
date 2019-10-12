@@ -1,11 +1,13 @@
-## My Project
+## Alexa Workshop Smart Home - Device Binding UI
 
-TODO: Fill this README out!
+This is the source code of [Step 1: Build Device Binding UI](https://alexaworkshop.com/smart-home/1.build-device-ui/).
+If you are looking for the lab content, please visit the above link.
 
-Be sure to:
+If you are looking for the whole lab, please visit [AWS & Alexa Workshop - Smart Home Skills](https://alexaworkshop.com/smart-home/).
 
-* Change the title in this README
-* Edit your repository description on GitHub
+If you have any issues, please create issues in [aws-samples/aws-alexa-workshop](https://github.com/aws-samples/aws-alexa-workshop/issues) repository.
+
+![](aws_alexa.png)
 
 ## License
 
