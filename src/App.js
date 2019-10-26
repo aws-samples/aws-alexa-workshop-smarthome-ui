@@ -6,12 +6,18 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from './aws-exports';
 import { withAuthenticator } from 'aws-amplify-react'
 
 import Device from './Device';
+import Devices from './Devices';
 
 Amplify.configure(awsconfig);
 
@@ -27,7 +33,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function App() {
+function App () {
+  //const urlParams = new URLSearchParams(window.location.search);
+  //const thingName = urlParams.get('thingName');
   const classes = useStyles();
 
   const logout = async () => {
@@ -35,6 +43,7 @@ function App() {
   };
 
   return (
+    <Router>
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
@@ -46,14 +55,24 @@ function App() {
           </Typography>
           <Button color="inherit" onClick={logout}>Sign Out</Button>
         </Toolbar>
-      </AppBar>
-      <Device/>
+        </AppBar>
+        <Switch>
+          <Route path="/device/:thingName" render={({ match }) => <Device thingName={match.params.thingName}/>}>
+          </Route>
+          <Route path="/">
+            <Devices />
+          </Route>
+        </Switch>
+
     </div>
+    </Router>
   );
 }
 
+
+
 const signUpConfig = {
-  defaultCountryCode: "86",
+  defaultCountryCode: "46",
   usernameAttributes: "email"
 };
 

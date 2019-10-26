@@ -14,12 +14,14 @@ export const listDevices = `query ListDevices(
   $filter: ModelDeviceFilterInput
   $limit: Int
   $nextToken: String
+  $sortDirection: ModelSortDirection
 ) {
   listDevices(
     thingName: $thingName
     filter: $filter
     limit: $limit
     nextToken: $nextToken
+    sortDirection: $sortDirection
   ) {
     items {
       thingName

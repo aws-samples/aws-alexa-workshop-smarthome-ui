@@ -12,7 +12,7 @@ import { Grid } from '@material-ui/core';
 import {API, Auth, graphqlOperation} from "aws-amplify";
 import * as queries from "./graphql/queries";
 import * as mutations from "./graphql/mutations";
-import Connect from "aws-amplify-react/src/API/GraphQL/Connect";
+import { Connect } from "aws-amplify-react";
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import {amber, green} from "@material-ui/core/colors"
@@ -31,11 +31,9 @@ const useStyles = makeStyles({
 
 
 
-export default function Device() {
+export default function Device ({ thingName }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const urlParams = new URLSearchParams(window.location.search);
-  const thingName = urlParams.get('thingName');
 
   const bindDeviceToUser = async () => {
     const currentUser = await Auth.currentAuthenticatedUser();
@@ -47,15 +45,15 @@ export default function Device() {
     };
 
     const newDevice = await API.graphql(graphqlOperation(mutations.createDevice, {input: deviceDetails}));
-    setOpen(true)
+    setOpen(true);
 
     console.log(newDevice)
   };
 
-  const unbindDevice = async () => {
+  const unbindDevice = async (name) => {
 
-    const oldDevice = await API.graphql(graphqlOperation(mutations.deleteDevice, {input: {thingName: thingName}}));
-    setOpen(true)
+    const oldDevice = await API.graphql(graphqlOperation(mutations.deleteDevice, {input: {thingName: name}}));
+    setOpen(true);
 
     console.log(oldDevice)
   };
@@ -70,7 +68,7 @@ export default function Device() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Smart Lamp
+            Smart Lamp {thingName}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             Smart lamp controlled to Alexa.
@@ -82,13 +80,13 @@ export default function Device() {
             if (device && device.username) {
               return (
                 <Button variant="contained" size="large" color="primary" onClick={unbindDevice}>
-                  Unbind
+                  Unclaim
                 </Button>
               )
             } else {
               return (
                 <Button variant="contained" size="large" color="primary" onClick={bindDeviceToUser}>
-                  Bind
+                  Claim
                 </Button>
               )
             }
@@ -165,29 +163,31 @@ export default function Device() {
   }
 
 
-  return (
-    <div>
-      <Snackbar
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        open={open}
-        autoHideDuration={2000}
-        onClose={handleClose}
-      >
-        <MySnackbarContentWrapper
-          variant="success"
-          message="Success!"
+    return (
+      <div>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          open={open}
+          autoHideDuration={2000}
           onClose={handleClose}
-        />
-      </Snackbar>
-      <Connect query={graphqlOperation(queries.getDevice, {thingName: thingName})}>
-        {({ data: { getDevice }, error }) => {
-          if (error) return (<h3>Error</h3>);
-          return (<CardView device={getDevice} /> );
-        }}
-      </Connect>
-    </div>
-  );
+        >
+          <MySnackbarContentWrapper
+            variant="success"
+            message="Success!"
+            onClose={handleClose}
+          />
+        </Snackbar>
+        <Connect query={graphqlOperation(queries.getDevice, { thingName: thingName })}>
+          {({ data, error }) => {
+            if (error) return (<h3>Error</h3>);
+            if (data) {
+              return (<CardView device={data.getDevice} />);
+            }
+          }}
+        </Connect>
+      </div>
+    );
 }
