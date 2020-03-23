@@ -7,12 +7,11 @@
     "@material-ui/icons": "^4.2.1",
     "aws-amplify": "^1.1.35",
     "aws-amplify-react": "^2.3.12",
-    "clsx": "latest",
+    "clsx": "^1.1.0",
     "prop-types": "latest",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.0.1",
+    "react-scripts": "^3.4.1",
     "typeface-roboto": "^0.0.75"
   },
   "scripts": {
@@ -35,5 +34,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "**/mkdirp/minimist": "^1.2.5"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "typescript": "^3.8.3",
+    "set-value": "^2.0.1"
   }
 }
