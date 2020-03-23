@@ -11,7 +11,7 @@
     "prop-types": "latest",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "^3.4.0",
+    "react-scripts": "^3.4.1",
     "typeface-roboto": "^0.0.75"
   },
   "scripts": {
