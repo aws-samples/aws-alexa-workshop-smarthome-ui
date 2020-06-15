@@ -8,6 +8,7 @@
     "aws-amplify": "^1.1.35",
     "aws-amplify-react": "^2.3.12",
     "clsx": "^1.1.0",
+    "kind-of": "^6.0.3",
     "prop-types": "latest",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -40,7 +41,7 @@
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "typescript": "^3.8.3",
-    "set-value": "^2.0.1"
+    "set-value": "^2.0.1",
+    "typescript": "^3.8.3"
   }
 }
