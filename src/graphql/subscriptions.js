@@ -1,27 +1,36 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateDevice = `subscription OnCreateDevice {
-  onCreateDevice {
-    thingName
-    username
-    description
+export const onCreateDevice = /* GraphQL */ `
+  subscription OnCreateDevice {
+    onCreateDevice {
+      thingName
+      username
+      description
+      createdAt
+      updatedAt
+    }
   }
-}
 `;
-export const onUpdateDevice = `subscription OnUpdateDevice {
-  onUpdateDevice {
-    thingName
-    username
-    description
+export const onUpdateDevice = /* GraphQL */ `
+  subscription OnUpdateDevice {
+    onUpdateDevice {
+      thingName
+      username
+      description
+      createdAt
+      updatedAt
+    }
   }
-}
 `;
-export const onDeleteDevice = `subscription OnDeleteDevice {
-  onDeleteDevice {
-    thingName
-    username
-    description
+export const onDeleteDevice = /* GraphQL */ `
+  subscription OnDeleteDevice {
+    onDeleteDevice {
+      thingName
+      username
+      description
+      createdAt
+      updatedAt
+    }
   }
-}
 `;

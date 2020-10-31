@@ -1,32 +1,40 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getDevice = `query GetDevice($thingName: String!) {
-  getDevice(thingName: $thingName) {
-    thingName
-    username
-    description
-  }
-}
-`;
-export const listDevices = `query ListDevices(
-  $thingName: String
-  $filter: ModelDeviceFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listDevices(
-    thingName: $thingName
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-  ) {
-    items {
+export const getDevice = /* GraphQL */ `
+  query GetDevice($thingName: String!) {
+    getDevice(thingName: $thingName) {
       thingName
       username
       description
+      createdAt
+      updatedAt
     }
-    nextToken
   }
-}
+`;
+export const listDevices = /* GraphQL */ `
+  query ListDevices(
+    $thingName: String
+    $filter: ModelDeviceFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listDevices(
+      thingName: $thingName
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        thingName
+        username
+        description
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
 `;
