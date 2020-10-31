@@ -1,27 +1,45 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createDevice = `mutation CreateDevice($input: CreateDeviceInput!) {
-  createDevice(input: $input) {
-    thingName
-    username
-    description
+export const createDevice = /* GraphQL */ `
+  mutation CreateDevice(
+    $input: CreateDeviceInput!
+    $condition: ModelDeviceConditionInput
+  ) {
+    createDevice(input: $input, condition: $condition) {
+      thingName
+      username
+      description
+      createdAt
+      updatedAt
+    }
   }
-}
 `;
-export const updateDevice = `mutation UpdateDevice($input: UpdateDeviceInput!) {
-  updateDevice(input: $input) {
-    thingName
-    username
-    description
+export const updateDevice = /* GraphQL */ `
+  mutation UpdateDevice(
+    $input: UpdateDeviceInput!
+    $condition: ModelDeviceConditionInput
+  ) {
+    updateDevice(input: $input, condition: $condition) {
+      thingName
+      username
+      description
+      createdAt
+      updatedAt
+    }
   }
-}
 `;
-export const deleteDevice = `mutation DeleteDevice($input: DeleteDeviceInput!) {
-  deleteDevice(input: $input) {
-    thingName
-    username
-    description
+export const deleteDevice = /* GraphQL */ `
+  mutation DeleteDevice(
+    $input: DeleteDeviceInput!
+    $condition: ModelDeviceConditionInput
+  ) {
+    deleteDevice(input: $input, condition: $condition) {
+      thingName
+      username
+      description
+      createdAt
+      updatedAt
+    }
   }
-}
 `;
