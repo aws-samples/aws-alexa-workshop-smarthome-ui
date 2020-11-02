@@ -9,6 +9,7 @@
     "aws-amplify-react": "^2.3.12",
     "clsx": "^1.1.0",
     "kind-of": "^6.0.3",
+    "lodash": "^4.17.19",
     "prop-types": "latest",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -42,7 +43,6 @@
     "**/**/kind-of": "^6.0.3",
     "**/**/set-value": "^3.0.1",
     "**/**/http-proxy": "^1.18.1"
-
   },
   "devDependencies": {
     "eslint": "^6.8.0",
