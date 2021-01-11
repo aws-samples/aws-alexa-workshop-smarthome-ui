@@ -42,7 +42,8 @@
     "**/**/lodash": "^4.17.19",
     "**/**/kind-of": "^6.0.3",
     "**/**/set-value": "^3.0.1",
-    "**/**/http-proxy": "^1.18.1"
+    "**/**/http-proxy": "^1.18.1",
+    "aws-amplify/**/axios": "^0.21.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
