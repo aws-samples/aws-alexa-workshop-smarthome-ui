@@ -183,9 +183,9 @@ export default function Device() {
         />
       </Snackbar>
       <Connect query={graphqlOperation(queries.getDevice, {thingName: thingName})}>
-        {({ data: { getDevice }, error }) => {
-          if (error) return (<h3>Error</h3>);
-          return (<CardView device={getDevice} /> );
+        {({ data, error }) => {
+          if (error || data === undefined || data === null) return (<h3>Error</h3>);
+          return (<CardView device={data.getDevice} /> );
         }}
       </Connect>
     </div>
