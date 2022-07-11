@@ -47,6 +47,7 @@
     "**/**/node-fetch": "^2.6.7",
     "**/**/ansi-regex": "^5.0.1",
     "**/**/browserslist": "^4.16.5",
-    "react-scripts/**/follow-redirects": "^1.14.7"
+    "react-scripts/**/follow-redirects": "^1.14.7",
+    "**/**/nth-check": "^2.0.1"
   }
 }
